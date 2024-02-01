@@ -10,14 +10,14 @@ class TourFactory extends Factory
 {
     protected $model = Tour::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
-            'travel_id' => $this->faker->words(),
-            'name' => $this->faker->name(),
+            'travel_id' => fake()->uuid(),
+            'name' => fake()->name(),
             'startingDate' => Carbon::now(),
             'endingDate' => Carbon::now(),
-            'price' => $this->faker->randomNumber(),
+            'price' => fake()->randomNumber(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

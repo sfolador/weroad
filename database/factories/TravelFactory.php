@@ -10,13 +10,13 @@ class TravelFactory extends Factory
 {
     protected $model = Travel::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
-            'slug' => $this->faker->slug(),
-            'name' => $this->faker->name(),
-            'description' => $this->faker->text(),
-            'numberOfDays' => $this->faker->randomNumber(),
+            'slug' => fake()->slug(),
+            'name' => fake()->name(),
+            'description' => fake()->text(),
+            'numberOfDays' => fake()->randomNumber(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
