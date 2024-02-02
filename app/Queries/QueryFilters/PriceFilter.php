@@ -3,18 +3,23 @@
 namespace App\Queries\QueryFilters;
 
 use App\Queries\GiveMeTravels;
-use Closure;
+use Illuminate\Database\Eloquent\Builder;
 
-class PriceFilter
+class PriceFilter extends AbstractFilter
 {
-    public function __construct()
-    {
-    }
 
-    public function handle(GiveMeTravels $query, Closure $next): mixed
-    {
-        $query->where('slug');
 
-        return $next($query);
+    public function perform(GiveMeTravels|Builder $query): void
+    {
+        if ($this->searchData) {
+            $query->when($this->searchData->priceFrom, function ($q) {
+
+                $q->where('price', '>=', $this->searchData->priceFrom);
+            })
+                ->when($this->searchData->priceTo, function ($q) {
+                    $q->where('price', '<=', $this->searchData->priceTo);
+                });
+        }
+
     }
 }

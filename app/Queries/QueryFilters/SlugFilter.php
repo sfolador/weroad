@@ -2,19 +2,21 @@
 
 namespace App\Queries\QueryFilters;
 
+use App\Data\Search\SearchData;
 use App\Queries\GiveMeTravels;
 use Closure;
+use Illuminate\Database\Eloquent\Builder;
 
-class SlugFilter
+class SlugFilter extends AbstractFilter
 {
-    public function __construct()
-    {
-    }
 
-    public function handle(GiveMeTravels $query, Closure $next): mixed
+    public function perform(GiveMeTravels|Builder $query): void
     {
-        $query->where('slug', $query->searchData->slug);
+        if ($this->searchData) {
+            $query->whereHas('travel', function ($q) {
+                $q->where('slug', $this->searchData->slug);
+            });
+        }
 
-        return $next($query);
     }
 }

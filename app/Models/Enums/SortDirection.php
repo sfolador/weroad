@@ -4,7 +4,7 @@ namespace App\Models\Enums;
 
 enum SortDirection: string
 {
-    const ASC = 'asc';
+    case ASC = 'asc';
 
-    const DESC = 'desc';
+    case DESC = 'desc';
 }

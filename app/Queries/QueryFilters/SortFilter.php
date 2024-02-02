@@ -2,19 +2,23 @@
 
 namespace App\Queries\QueryFilters;
 
+use App\Data\Search\SearchData;
 use App\Queries\GiveMeTravels;
 use Closure;
+use Illuminate\Database\Eloquent\Builder;
 
-class SortFilter
+class SortFilter extends AbstractFilter
 {
-    public function __construct()
-    {
-    }
 
-    public function handle(GiveMeTravels $query, Closure $next): mixed
+    public function perform(GiveMeTravels|Builder $query): void
     {
-        $query->where('slug');
+        if ($this->searchData) {
 
-        return $next($query);
+           $query->when($this->searchData->sortDirection, function ( $q) {
+                $q->orderBy('price', $this->searchData->sortDirection->value);
+            });
+
+        }
+
     }
 }
