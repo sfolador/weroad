@@ -17,8 +17,23 @@ class TravelFactory extends Factory
             'name' => fake()->name(),
             'description' => fake()->text(),
             'numberOfDays' => fake()->randomNumber(),
+            'public' => fake()->boolean(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
+    }
+
+    public function public(): self
+    {
+        return $this->state(fn (array $attributes) => [
+            'public' => true,
+        ]);
+    }
+
+    public function private(): self
+    {
+        return $this->state(fn (array $attributes) => [
+            'public' => false,
+        ]);
     }
 }

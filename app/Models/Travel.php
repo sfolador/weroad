@@ -19,7 +19,19 @@ class Travel extends Model
         'name',
         'description',
         'numberOfDays',
+        'public',
     ];
+
+    protected static function booted(): void
+    {
+        static::creating(function(Travel $travel){
+            $travel->numberOfNights = $travel->numberOfDays - 1;
+        });
+
+        static::updating(function(Travel $travel){
+            $travel->numberOfNights = $travel->numberOfDays - 1;
+        });
+    }
 
     protected $casts = [
         'id' => 'string',
@@ -28,5 +40,10 @@ class Travel extends Model
     public function moods(): BelongsToMany
     {
         return $this->belongsToMany(Mood::class)->withPivot('value');
+    }
+
+    public function isPublic(): bool
+    {
+        return $this->public;
     }
 }
