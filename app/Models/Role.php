@@ -20,4 +20,14 @@ class Role extends Model
         'id' => 'string',
         'name' => Roles::class,
     ];
+
+    public static function admin(): self
+    {
+        return self::where('name', Roles::ADMIN)->firstOrFail();
+    }
+
+    public static function editor(): self
+    {
+        return self::where('name', Roles::EDITOR)->firstOrFail();
+    }
 }
