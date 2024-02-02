@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Data;
+namespace App\Data\Travel;
 
-use Illuminate\Support\Collection;
+use App\Data\MoodData;
+use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\DataCollection;
 
 class TravelCreationData extends Data
 {
@@ -11,8 +13,8 @@ class TravelCreationData extends Data
         public string $name,
         public string $description,
         public int $numberOfDays,
-        public Collection $moods,
-
+        #[DataCollectionOf(MoodData::class)]
+        public DataCollection $moods,
     ) {
     }
 }
