@@ -9,6 +9,12 @@ use Spatie\LaravelData\DataCollection;
 
 class TravelCreationData extends Data
 {
+    /**
+     * @param string $name
+     * @param string $description
+     * @param int $numberOfDays
+     * @param DataCollection<int,MoodData> $moods
+     */
     public function __construct(
         public string $name,
         public string $description,

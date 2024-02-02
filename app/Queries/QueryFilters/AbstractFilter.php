@@ -3,6 +3,7 @@
 namespace App\Queries\QueryFilters;
 
 use App\Data\Search\SearchData;
+use App\Models\Tour;
 use App\Queries\GiveMeTravels;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
@@ -13,7 +14,7 @@ abstract class AbstractFilter
     {
     }
 
-    public function handle(mixed $query, Closure $next): mixed
+    public function handle(GiveMeTravels $query, Closure $next): mixed
     {
         $this->searchData = $query->searchData;
         $this->perform($query);
@@ -21,10 +22,18 @@ abstract class AbstractFilter
         return $next($query);
     }
 
-    public function __invoke(mixed $query): void
+    /**
+     * @param GiveMeTravels|Builder<Tour> $query
+     * @return void
+     */
+    public function __invoke(GiveMeTravels|Builder $query): void
     {
         $this->perform($query);
     }
 
+    /**
+     * @param GiveMeTravels|Builder<Tour> $query
+     * @return void
+     */
     abstract public function perform(GiveMeTravels|Builder $query): void;
 }

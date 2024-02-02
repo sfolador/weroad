@@ -14,7 +14,7 @@ class TravelsController extends Controller
     {
         $travel = CreateTravel::execute($travelCreationData);
 
-        return response()->json();
+        return response()->json($travel);
     }
 
     public function edit(Travel $travel, TravelEditData $travelEditData)

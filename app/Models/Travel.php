@@ -37,6 +37,9 @@ class Travel extends Model
         'id' => 'string',
     ];
 
+    /**
+     * @return BelongsToMany<Mood>
+     */
     public function moods(): BelongsToMany
     {
         return $this->belongsToMany(Mood::class)->withPivot('value');

@@ -24,5 +24,7 @@ class TravelsController extends Controller
             ])
             ->thenReturn()
             ->paginate(10);
+
+        return $travels;
     }
 }

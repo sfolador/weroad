@@ -22,6 +22,9 @@ class SearchTours
                 SortFilter::class,
             ])
             ->thenReturn()
+            /**
+             * @phpstan-ignore-next-line
+             */
             ->paginate(10);
     }
 }

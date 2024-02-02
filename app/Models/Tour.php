@@ -27,6 +27,9 @@ class Tour extends Model
         'endingDate' => 'date',
     ];
 
+    /**
+     * @return BelongsTo<Travel,Tour>
+     */
     public function travel(): BelongsTo
     {
         return $this->belongsTo(Travel::class);

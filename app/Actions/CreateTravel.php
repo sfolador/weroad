@@ -9,7 +9,7 @@ use App\Models\Travel;
 
 class CreateTravel
 {
-    public static function execute(TravelCreationData $travelCreationData)
+    public static function execute(TravelCreationData $travelCreationData): Travel
     {
 
         $travel = new Travel();
@@ -26,6 +26,8 @@ class CreateTravel
             $mood->value = $moodData->value;
             $mood->save();
         });
+
+        return $travel;
 
     }
 }
