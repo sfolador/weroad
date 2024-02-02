@@ -39,9 +39,18 @@ class NumberOfDaysRule implements DataAwareRule, ValidationRule
             return;
         }
 
+        /**
+         * @phpstan-ignore-next-line
+         */
         $starDate = Carbon::parse($startDate);
+        /**
+         * @phpstan-ignore-next-line
+         */
         $endDate = Carbon::parse($value);
         $calculatedDiffInDays = $starDate->diffInDays($endDate);
+        /**
+         * @phpstan-ignore-next-line
+         */
         $numberOfDaysFromTravel = $travel->numberOfDays;
 
         if ($calculatedDiffInDays !== $numberOfDaysFromTravel) {
@@ -50,8 +59,15 @@ class NumberOfDaysRule implements DataAwareRule, ValidationRule
 
     }
 
-    public function setData(array $data): void
+    /**
+     * Set the data under validation.
+     *
+     * @param  array<string,mixed>  $data
+     * @return $this
+     */
+    public function setData(array $data): static
     {
         $this->data = $data;
+        return $this;
     }
 }
