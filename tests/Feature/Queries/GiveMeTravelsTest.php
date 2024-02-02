@@ -4,7 +4,6 @@ use App\Data\Search\SearchData;
 use App\Models\Tour;
 use App\Models\Travel;
 use App\Queries\GiveMeTravels;
-use App\Queries\QueryFilters\SlugFilter;
 
 beforeEach(function () {
     $this->travel = Travel::factory()->create([
@@ -38,15 +37,13 @@ it('returns all tours', function () {
         ->and($results->count())->toBe(3);
 });
 
-
-
-it('can have a pipeline',function(){
+it('can have a pipeline', function () {
     $searchData = SearchData::from([]);
 
     $results = GiveMeTravels::query($searchData)
         ->through([
-            function($query, $next){
-             return $next($query);
+            function ($query, $next) {
+                return $next($query);
             },
         ])
         ->thenReturn()

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 abstract class AbstractFilter
 {
-    public function __construct(public SearchData|null $searchData = null)
+    public function __construct(public ?SearchData $searchData = null)
     {
     }
 

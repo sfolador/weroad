@@ -5,10 +5,7 @@ use App\Models\Enums\SortDirection;
 use App\Models\Tour;
 use App\Models\Travel;
 use App\Queries\GiveMeTravels;
-use App\Queries\QueryFilters\PriceFilter;
-use App\Queries\QueryFilters\SlugFilter;
 use App\Queries\QueryFilters\SortFilter;
-
 
 beforeEach(function () {
     $this->travel = Travel::factory()->create([
@@ -42,9 +39,8 @@ it('can be applied as a tappable scope', function () {
         ->tap(new SortFilter($searchData))
         ->get();
 
-
     expect($results->count())->toBe(3)
-    ->and($results->first()->travel->slug)->toBe($this->travel_three->slug);
+        ->and($results->first()->travel->slug)->toBe($this->travel_three->slug);
 });
 
 it('can be used in a pipeline', function () {
@@ -62,10 +58,9 @@ it('can be used in a pipeline', function () {
         ->and($results->first()->travel->slug)->toBe($this->travel_three->slug);
 });
 
-
-it('can use a desc direction',function(){
+it('can use a desc direction', function () {
     $searchData = SearchData::from([
-        'sortDirection' => SortDirection::DESC
+        'sortDirection' => SortDirection::DESC,
     ]);
 
     $results = GiveMeTravels::query($searchData)
@@ -74,16 +69,14 @@ it('can use a desc direction',function(){
         ])
         ->thenReturn()
         ->get();
-
 
     expect($results->count())->toBe(3)
         ->and($results->first()->price)->toBe($this->tour_two->price);
 });
 
-
-it('can use a asc direction',function(){
+it('can use a asc direction', function () {
     $searchData = SearchData::from([
-        'sortDirection' => SortDirection::ASC
+        'sortDirection' => SortDirection::ASC,
     ]);
 
     $results = GiveMeTravels::query($searchData)
@@ -92,7 +85,6 @@ it('can use a asc direction',function(){
         ])
         ->thenReturn()
         ->get();
-
 
     expect($results->count())->toBe(3)
         ->and($results->first()->price)->toBe($this->tour_three->price);

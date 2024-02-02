@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Pipeline;
 trait HasPipeline
 {
     /**
-     * @param array<int,mixed> $pipes
-     * @return \Illuminate\Pipeline\Pipeline
+     * @param  array<int,mixed>  $pipes
      */
     public function through(array $pipes): \Illuminate\Pipeline\Pipeline
     {

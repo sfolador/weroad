@@ -5,8 +5,6 @@ use App\Models\Tour;
 use App\Models\Travel;
 use App\Queries\GiveMeTravels;
 use App\Queries\QueryFilters\PriceFilter;
-use App\Queries\QueryFilters\SlugFilter;
-
 
 beforeEach(function () {
     $this->travel = Travel::factory()->create([
@@ -42,7 +40,6 @@ it('can be applied as a tappable scope', function () {
     $results = GiveMeTravels::query($searchData)
         ->tap(new PriceFilter($searchData))
         ->get();
-
 
     expect($results->count())->toBe(2);
 });

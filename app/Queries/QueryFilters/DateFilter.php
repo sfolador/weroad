@@ -2,15 +2,12 @@
 
 namespace App\Queries\QueryFilters;
 
-use App\Data\Search\SearchData;
 use App\Queries\GiveMeTravels;
 use Carbon\Carbon;
-use Closure;
 use Illuminate\Database\Eloquent\Builder;
 
 class DateFilter extends AbstractFilter
 {
-
     public function perform(GiveMeTravels|Builder $query): void
     {
         if ($this->searchData) {

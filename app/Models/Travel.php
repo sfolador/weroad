@@ -24,11 +24,11 @@ class Travel extends Model
 
     protected static function booted(): void
     {
-        static::creating(function(Travel $travel){
+        static::creating(function (Travel $travel) {
             $travel->numberOfNights = $travel->numberOfDays - 1;
         });
 
-        static::updating(function(Travel $travel){
+        static::updating(function (Travel $travel) {
             $travel->numberOfNights = $travel->numberOfDays - 1;
         });
     }

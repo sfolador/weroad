@@ -17,13 +17,13 @@ class TourCreationData extends Data
     public function __construct(
         #[StringType, Min(3), Max(128)]
         public string $name,
-        #[Uuid,Exists('travels','id')]
+        #[Uuid, Exists('travels', 'id')]
         public string $travel,
         #[WithCast(DateTimeInterfaceCast::class, type: Carbon::class)]
         public Carbon $startingDate,
         #[WithCast(DateTimeInterfaceCast::class, type: Carbon::class)]
         public Carbon $endingDate,
         public int $price
-    )
-    {}
+    ) {
+    }
 }

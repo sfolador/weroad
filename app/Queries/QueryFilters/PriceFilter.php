@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PriceFilter extends AbstractFilter
 {
-
-
     public function perform(GiveMeTravels|Builder $query): void
     {
         if ($this->searchData) {
