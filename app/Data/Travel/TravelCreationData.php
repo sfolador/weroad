@@ -14,17 +14,17 @@ use Spatie\LaravelData\DataCollection;
 class TravelCreationData extends Data
 {
     /**
-     * @param string $name
-     * @param string $description
-     * @param int $numberOfDays
-     * @param DataCollection<int,MoodData> $moods
+     * @param  string  $name
+     * @param  string  $description
+     * @param  int  $numberOfDays
+     * @param  DataCollection<int,MoodData>  $moods
      */
     public function __construct(
-        #[StringType,Min(3),Max(128)]
+        #[StringType, Min(3), Max(128)]
         public string $name,
-        #[StringType,Min(3),Max(1000)]
+        #[StringType, Min(3), Max(1000)]
         public string $description,
-        #[IntegerType,Min(1),Max(365)]
+        #[IntegerType, Min(1), Max(365)]
         public int $numberOfDays,
         #[DataCollectionOf(MoodData::class)]
         public DataCollection $moods,

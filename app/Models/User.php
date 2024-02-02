@@ -46,7 +46,6 @@ class User extends Authenticatable
         'id' => 'string',
     ];
 
-
     /**
      * @return BelongsTo<Role,User>
      */

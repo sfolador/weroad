@@ -8,7 +8,7 @@ use Closure;
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\ValidationRule;
 
-class NumberOfDaysRule implements ValidationRule, DataAwareRule
+class NumberOfDaysRule implements DataAwareRule, ValidationRule
 {
     /**
      * All of the data under validation.
@@ -20,19 +20,22 @@ class NumberOfDaysRule implements ValidationRule, DataAwareRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $startDate = $this->data['startingDate'] ?? null;
-        if (!$startDate) {
+        if (! $startDate) {
             $fail('The starting date is required.');
+
             return;
         }
         $travelUuid = $this->data['travel'] ?? null;
-        if (!$travelUuid) {
+        if (! $travelUuid) {
             $fail('The travel is required.');
+
             return;
         }
 
         $travel = Travel::find($travelUuid);
-        if (!$travel) {
+        if (! $travel) {
             $fail('The travel is invalid.');
+
             return;
         }
 

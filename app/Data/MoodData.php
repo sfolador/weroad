@@ -11,9 +11,9 @@ use Spatie\LaravelData\Data;
 class MoodData extends Data
 {
     public function __construct(
-        #[StringType,Min(3),Max(128)]
+        #[StringType, Min(3), Max(128)]
         public string $name,
-        #[IntegerType,Min(0),Max(100)]
+        #[IntegerType, Min(0), Max(100)]
         public int $value
     ) {
     }

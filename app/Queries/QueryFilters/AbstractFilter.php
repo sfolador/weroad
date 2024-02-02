@@ -23,8 +23,7 @@ abstract class AbstractFilter
     }
 
     /**
-     * @param GiveMeTravels|Builder<Tour> $query
-     * @return void
+     * @param  GiveMeTravels|Builder<Tour>  $query
      */
     public function __invoke(GiveMeTravels|Builder $query): void
     {
@@ -32,8 +31,7 @@ abstract class AbstractFilter
     }
 
     /**
-     * @param GiveMeTravels|Builder<Tour> $query
-     * @return void
+     * @param  GiveMeTravels|Builder<Tour>  $query
      */
     abstract public function perform(GiveMeTravels|Builder $query): void;
 }

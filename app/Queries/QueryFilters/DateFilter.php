@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DateFilter extends AbstractFilter
 {
-
     /**
-     * @param GiveMeTravels|Builder<Tour> $query
-     * @return void
+     * @param  GiveMeTravels|Builder<Tour>  $query
      */
     public function perform(GiveMeTravels|Builder $query): void
     {

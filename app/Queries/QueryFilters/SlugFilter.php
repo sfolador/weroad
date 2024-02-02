@@ -10,13 +10,12 @@ use Spatie\LaravelData\Optional;
 class SlugFilter extends AbstractFilter
 {
     /**
-     * @param GiveMeTravels|Builder<Tour> $query
-     * @return void
+     * @param  GiveMeTravels|Builder<Tour>  $query
      */
     public function perform(GiveMeTravels|Builder $query): void
     {
         if ($this->searchData) {
-            $query->when( (!$this->searchData->slug instanceof Optional) && $this->searchData->slug, function ($q) {
+            $query->when((! $this->searchData->slug instanceof Optional) && $this->searchData->slug, function ($q) {
 
                 $q->whereHas('travel', function ($q) {
                     /**
