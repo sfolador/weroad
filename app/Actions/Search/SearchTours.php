@@ -8,14 +8,16 @@ use App\Queries\QueryFilters\DateFilter;
 use App\Queries\QueryFilters\PriceFilter;
 use App\Queries\QueryFilters\SlugFilter;
 use App\Queries\QueryFilters\SortFilter;
+use App\Queries\QueryFilters\VisibilityFilter;
 use Illuminate\Support\Facades\Pipeline;
 
 class SearchTours
 {
-    public function execute(SearchData $searchData)
+    public static function execute(SearchData $searchData)
     {
         return Pipeline::send(GiveMeTravels::query($searchData))
             ->through([
+                VisibilityFilter::class,
                 SlugFilter::class,
                 PriceFilter::class,
                 DateFilter::class,

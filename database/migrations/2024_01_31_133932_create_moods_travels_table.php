@@ -12,8 +12,8 @@ return new class extends Migration
     {
         Schema::create('moods_travels', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignIdFor(Mood::class)->constrained();
-            $table->foreignIdFor(Travel::class)->constrained();
+            $table->foreignIdFor(Mood::class);
+            $table->foreignIdFor(Travel::class);
             $table->integer('value')->default(0);
             $table->timestamps();
         });

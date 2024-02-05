@@ -24,3 +24,6 @@ Route::prefix('admin')->group(function () {
     Route::apiResource('travels', TravelsController::class)->only(['store', 'edit']);
     Route::apiResource('travels.tours', TravelToursController::class)->only(['store']);
 });
+
+
+Route::post('/search','App\Http\Controllers\Guest\TravelsController@search')->name('search');

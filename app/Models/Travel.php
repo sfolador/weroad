@@ -42,7 +42,7 @@ class Travel extends Model
      */
     public function moods(): BelongsToMany
     {
-        return $this->belongsToMany(Mood::class)->withPivot('value');
+        return $this->belongsToMany(Mood::class,'moods_travels')->withPivot('value');
     }
 
     public function isPublic(): bool
