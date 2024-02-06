@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "62665f0b-5c21-4a71-9aaf-0cfbb8ac8410",
+		"name": "WeRoad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "705705",
+		"_collection_link": "https://orange-meadow-979336.postman.co/workspace/New-Team-Workspace~954057d5-0921-4bf0-a150-3f8a3477be20/collection/705705-62665f0b-5c21-4a71-9aaf-0cfbb8ac8410?action=share&source=collection_link&creator=705705"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin_password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://weroad.test/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"weroad",
+						"test"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creates a travel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|FTCgGmNpfxljtcUfS5q3SO7EhfIqnQWNHUN42kFHacd6b207",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"travel to south america\",\n    \"description\" : \"travel description\",\n    \"numberOfDays\" : 5,\n    \"moods\" : [\n        {\n            \"name\" : \"happy\",\n            \"value\" : 80\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://weroad.test/api/admin/travels",
+					"protocol": "https",
+					"host": [
+						"weroad",
+						"test"
+					],
+					"path": [
+						"api",
+						"admin",
+						"travels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creates a tour",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"tour name\",\n    \"travel\" :\"9b3db9cf-4ae7-4a8d-9fa9-72ca7ff95826\",\n    \"startingDate\" : \"12-03-2024\",\n    \"endingDate\" : \"17-03-2024\",\n    \"price\" : 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://weroad.test/api/admin/travels/9b3db9cf-4ae7-4a8d-9fa9-72ca7ff95826/tours",
+					"protocol": "https",
+					"host": [
+						"weroad",
+						"test"
+					],
+					"path": [
+						"api",
+						"admin",
+						"travels",
+						"9b3db9cf-4ae7-4a8d-9fa9-72ca7ff95826",
+						"tours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Searches",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"slug\" : \"travel_to_south_america\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://weroad.test/api/search",
+					"protocol": "https",
+					"host": [
+						"weroad",
+						"test"
+					],
+					"path": [
+						"api",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
