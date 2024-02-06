@@ -60,3 +60,30 @@ it('edits a travel description', function () {
         ->description->toBe($description);
 
 });
+
+it('edits a travel moods', function () {
+    $travel = Travel::factory()->create([
+        'name' => 'Travel Name',
+        'description' => 'travel description',
+        'numberOfDays' => 2,
+    ]);
+
+    $travelEditData = TravelEditData::from([
+        'moods' => [
+            [
+                'name' => 'Mood 1',
+                'value' => 1,
+            ],
+            [
+                'name' => 'Mood 2',
+                'value' => 2,
+            ],
+        ],
+    ]);
+
+    $travel = EditTravel::execute($travel, $travelEditData);
+
+    expect($travel)->toBeInstanceOf(Travel::class)
+        ->moods->toHaveCount(2);
+
+});

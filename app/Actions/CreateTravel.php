@@ -22,12 +22,20 @@ class CreateTravel
 
         $moods = $travelCreationData->moods;
 
-        //        $moods->each(function (MoodData $moodData) {
-        //            $mood = new Mood();
-        //            $mood->name = $moodData->name;
-        //            $mood->value = $moodData->value;
-        //            $mood->save();
-        //        });
+        if ($moods){
+            $moods->each(function (MoodData $moodData) use ($travel) {
+
+                $mood = Mood::where('name', $moodData->name)->first();
+                if (!$mood)  {
+                    $mood = new Mood();
+                    $mood->name = $moodData->name;
+                    $mood->save();
+                }
+                $travel->moods()->attach($mood->id, ['value' => $moodData->value]);
+
+            });
+        }
+
 
         return $travel;
 

@@ -11,7 +11,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('moods_travels', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id()->autoIncrement();
             $table->foreignIdFor(Mood::class);
             $table->foreignIdFor(Travel::class);
             $table->integer('value')->default(0);
