@@ -40,6 +40,8 @@ The seed command will create two users:
 - Requires a valid token
 - Requires the user to be an editor
 
+5. `POST /api/search` - Searches for Tours
+
 You can use the Postman collection, `WeRoad.postman_collection.json`, located in the root folder of this project to test the API.
 
 ## Description
