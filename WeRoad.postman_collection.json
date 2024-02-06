@@ -90,8 +90,65 @@
 			"response": []
 		},
 		{
+			"name": "Edits a travel",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|UU8ycef5khwFsHewR3sI0z8YIT0NwghO7BThJ4hde4a1d2d5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"travel\" : \"9b462544-703d-4df0-9b23-a605f8bad85c\",\n    \"name\" : \"travel to south americas\",\n    \"description\" : \"travel description\",\n    \"numberOfDays\" : 5,\n    \"moods\" : [\n        {\n            \"name\" : \"happy\",\n            \"value\" : 80\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://weroad.test/api/admin/travels/9b462544-703d-4df0-9b23-a605f8bad85c",
+					"protocol": "https",
+					"host": [
+						"weroad",
+						"test"
+					],
+					"path": [
+						"api",
+						"admin",
+						"travels",
+						"9b462544-703d-4df0-9b23-a605f8bad85c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Creates a tour",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|FTCgGmNpfxljtcUfS5q3SO7EhfIqnQWNHUN42kFHacd6b207",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -102,7 +159,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\" : \"tour name\",\n    \"travel\" :\"9b3db9cf-4ae7-4a8d-9fa9-72ca7ff95826\",\n    \"startingDate\" : \"12-03-2024\",\n    \"endingDate\" : \"17-03-2024\",\n    \"price\" : 1000\n}",
+					"raw": "{\n    \"name\" : \"tour name\",\n    \"travel\" :\"9b462544-703d-4df0-9b23-a605f8bad85c\",\n    \"startingDate\" : \"19-03-2024\",\n    \"endingDate\" : \"24-03-2024\",\n    \"price\" : 85309\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -110,7 +167,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://weroad.test/api/admin/travels/9b3db9cf-4ae7-4a8d-9fa9-72ca7ff95826/tours",
+					"raw": "https://weroad.test/api/admin/travels/9b462027-405a-45cb-99b2-a06a2035873f/tours",
 					"protocol": "https",
 					"host": [
 						"weroad",
@@ -120,7 +177,7 @@
 						"api",
 						"admin",
 						"travels",
-						"9b3db9cf-4ae7-4a8d-9fa9-72ca7ff95826",
+						"9b462027-405a-45cb-99b2-a06a2035873f",
 						"tours"
 					]
 				}
