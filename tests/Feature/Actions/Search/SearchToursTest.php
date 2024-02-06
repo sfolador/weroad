@@ -7,7 +7,7 @@ use App\Models\Tour;
 use App\Models\Travel;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-beforeEach(function(){
+beforeEach(function () {
 
     $this->travel = Travel::factory()->public()->create();
 
@@ -16,68 +16,62 @@ beforeEach(function(){
 
     $this->tour = Tour::factory()->create([
         'travel_id' => $this->travel->id,
-        'startingDate' =>  $this->startingDate,
+        'startingDate' => $this->startingDate,
         'endingDate' => $this->endingDate,
-        'price' => 10000
+        'price' => 10000,
     ]);
 
     $this->tourTwo = Tour::factory()->create([
         'travel_id' => $this->travel->id,
-        'startingDate' =>  $this->startingDate,
+        'startingDate' => $this->startingDate,
         'endingDate' => $this->endingDate,
-        'price' => 500
+        'price' => 500,
     ]);
-
 
     $this->tourThree = Tour::factory()->create([
         'travel_id' => $this->travel->id,
-        'startingDate' =>  $this->startingDate,
+        'startingDate' => $this->startingDate,
         'endingDate' => $this->endingDate,
-        'price' => 100
+        'price' => 100,
     ]);
 
 });
 
-it('searches tours',function(){
+it('searches tours', function () {
 
     $travels = SearchTours::execute(SearchData::from([
-        'priceFrom' => 100
+        'priceFrom' => 100,
     ]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class);
 });
 
-
-it ('can search by price',function(){
-
+it('can search by price', function () {
 
     $travels = SearchTours::execute(SearchData::from([
-        'priceFrom' => 20000
+        'priceFrom' => 20000,
     ]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
         ->and($travels->items())->toHaveCount(0);
 
-
     $travels = SearchTours::execute(SearchData::from([
-        'priceTo' => 400
+        'priceTo' => 400,
     ]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
         ->and($travels->items())->toHaveCount(1);
 
-
     $travels = SearchTours::execute(SearchData::from([
         'priceFrom' => 50,
-        'priceTo' => 1000
+        'priceTo' => 1000,
     ]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
         ->and($travels->items())->toHaveCount(2);
 });
 
-
-it('can show only public travels',function(){
+it('can show only public travels', function () {
 
     $travel = Travel::factory()->private()->create();
     $travels = SearchTours::execute(SearchData::from([]));
@@ -87,24 +81,21 @@ it('can show only public travels',function(){
 
 });
 
-
-
-
-it('filters the slug',function(){
+it('filters the slug', function () {
 
     $otherTravel = Travel::factory()->create([
-        'slug' => 'other_slug'
+        'slug' => 'other_slug',
     ]);
 
     $otherTour = Tour::factory()->create([
         'travel_id' => $otherTravel->id,
-        'startingDate' =>  $this->startingDate,
+        'startingDate' => $this->startingDate,
         'endingDate' => $this->endingDate,
-        'price' => 100
+        'price' => 100,
     ]);
 
     $travels = SearchTours::execute(SearchData::from([
-        'slug' => $this->travel->slug
+        'slug' => $this->travel->slug,
     ]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
@@ -112,34 +103,10 @@ it('filters the slug',function(){
 
 });
 
-it('filters the starting date',function(){
-
-    $travels = SearchTours::execute(SearchData::from([
-        'startingDate' => $this->startingDate->format('Y-m-d')
-    ]));
-
-    expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
-        ->and($travels->items())->toHaveCount(3);
-
-});
-
-
-it('filters the ending date',function(){
-
-    $travels = SearchTours::execute(SearchData::from([
-        'startingDate' => $this->endingDate->format('Y-m-d')
-    ]));
-
-    expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
-        ->and($travels->items())->toHaveCount(3);
-
-});
-
-it('filters the starting and ending date',function(){
+it('filters the starting date', function () {
 
     $travels = SearchTours::execute(SearchData::from([
         'startingDate' => $this->startingDate->format('Y-m-d'),
-        'endingDate' => $this->endingDate->format('Y-m-d')
     ]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
@@ -147,29 +114,36 @@ it('filters the starting and ending date',function(){
 
 });
 
-it('filters the starting and ending date and price',function(){
+it('filters the ending date', function () {
+
+    $travels = SearchTours::execute(SearchData::from([
+        'startingDate' => $this->endingDate->format('Y-m-d'),
+    ]));
+
+    expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
+        ->and($travels->items())->toHaveCount(3);
+
+});
+
+it('filters the starting and ending date', function () {
 
     $travels = SearchTours::execute(SearchData::from([
         'startingDate' => $this->startingDate->format('Y-m-d'),
         'endingDate' => $this->endingDate->format('Y-m-d'),
-        'priceFrom' => 50,
-        'priceTo' => 1000
     ]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
-        ->and($travels->items())->toHaveCount(2);
+        ->and($travels->items())->toHaveCount(3);
 
 });
 
-
-it('filters the starting and ending date and price and slug',function(){
+it('filters the starting and ending date and price', function () {
 
     $travels = SearchTours::execute(SearchData::from([
         'startingDate' => $this->startingDate->format('Y-m-d'),
         'endingDate' => $this->endingDate->format('Y-m-d'),
         'priceFrom' => 50,
         'priceTo' => 1000,
-        'slug' => $this->travel->slug
     ]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
@@ -177,8 +151,22 @@ it('filters the starting and ending date and price and slug',function(){
 
 });
 
+it('filters the starting and ending date and price and slug', function () {
 
-it('can sort everything in asc by price',function(){
+    $travels = SearchTours::execute(SearchData::from([
+        'startingDate' => $this->startingDate->format('Y-m-d'),
+        'endingDate' => $this->endingDate->format('Y-m-d'),
+        'priceFrom' => 50,
+        'priceTo' => 1000,
+        'slug' => $this->travel->slug,
+    ]));
+
+    expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
+        ->and($travels->items())->toHaveCount(2);
+
+});
+
+it('can sort everything in asc by price', function () {
     $travels = SearchTours::execute(SearchData::from([]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
@@ -188,9 +176,9 @@ it('can sort everything in asc by price',function(){
         ->and($travels->items()[2]->price)->toBe(10000);
 });
 
-it('can sort everything in desc by price',function(){
+it('can sort everything in desc by price', function () {
     $travels = SearchTours::execute(SearchData::from([
-        'sortDirection' => SortDirection::DESC
+        'sortDirection' => SortDirection::DESC,
     ]));
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)

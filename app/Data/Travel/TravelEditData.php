@@ -15,10 +15,10 @@ use Spatie\LaravelData\Optional;
 class TravelEditData extends Data
 {
     /**
-     * @param Optional|string $name
-     * @param Optional|string $description
-     * @param Optional|int $numberOfDays
-     * @param DataCollection<int,MoodData>|null $moods
+     * @param  Optional|string  $name
+     * @param  Optional|string  $description
+     * @param  Optional|int  $numberOfDays
+     * @param  DataCollection<int,MoodData>|null  $moods
      */
     public function __construct(
         #[StringType, Min(3), Max(128)]

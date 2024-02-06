@@ -13,7 +13,7 @@ it('creates a tour', function () {
         'travel' => $travel->id,
         'startingDate' => now(),
         'endingDate' => now()->addDays(5),
-        'price' => 1000
+        'price' => 1000,
     ]);
 
     $tour = CreateTour::execute($tourCreationData);

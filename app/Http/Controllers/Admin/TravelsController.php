@@ -22,6 +22,7 @@ class TravelsController extends Controller
     public function edit(Travel $travel, TravelEditData $travelEditData): TravelResource
     {
         $travel = EditTravel::execute($travel, $travelEditData);
+
         return new TravelResource($travel);
 
     }

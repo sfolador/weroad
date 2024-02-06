@@ -68,6 +68,7 @@ class NumberOfDaysRule implements DataAwareRule, ValidationRule
     public function setData(array $data): static
     {
         $this->data = $data;
+
         return $this;
     }
 }

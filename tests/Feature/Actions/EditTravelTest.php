@@ -1,12 +1,7 @@
 <?php
 
-use App\Actions\CreateTour;
-use App\Actions\CreateTravel;
 use App\Actions\EditTravel;
-use App\Data\Tour\TourCreationData;
-use App\Data\Travel\TravelCreationData;
 use App\Data\Travel\TravelEditData;
-use App\Models\Tour;
 use App\Models\Travel;
 
 it('edits a travel number of days', function () {
@@ -18,7 +13,7 @@ it('edits a travel number of days', function () {
     ]);
 
     $travelEditData = TravelEditData::from([
-        'numberOfDays' => 3
+        'numberOfDays' => 3,
     ]);
 
     $travel = EditTravel::execute($travel, $travelEditData);
@@ -27,7 +22,6 @@ it('edits a travel number of days', function () {
         ->numberOfDays->toBe(3);
 
 });
-
 
 it('edits a travel name', function () {
     $otherName = 'Other Travel Name';
@@ -47,8 +41,6 @@ it('edits a travel name', function () {
         ->name->toBe($otherName);
 
 });
-
-
 
 it('edits a travel description', function () {
     $description = 'Other Travel Description';

@@ -22,12 +22,12 @@ class CreateTravel
 
         $moods = $travelCreationData->moods;
 
-//        $moods->each(function (MoodData $moodData) {
-//            $mood = new Mood();
-//            $mood->name = $moodData->name;
-//            $mood->value = $moodData->value;
-//            $mood->save();
-//        });
+        //        $moods->each(function (MoodData $moodData) {
+        //            $mood = new Mood();
+        //            $mood->name = $moodData->name;
+        //            $mood->value = $moodData->value;
+        //            $mood->save();
+        //        });
 
         return $travel;
 

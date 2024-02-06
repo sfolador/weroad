@@ -4,7 +4,6 @@ use App\Data\Search\SearchData;
 use App\Models\Tour;
 use App\Models\Travel;
 use App\Queries\GiveMeTravels;
-use App\Queries\QueryFilters\SlugFilter;
 use App\Queries\QueryFilters\VisibilityFilter;
 
 beforeEach(function () {
@@ -41,7 +40,7 @@ it('can be applied as a tappable scope', function () {
 
 it('can be used in a pipeline', function () {
 
-    $searchData = SearchData::from([ ]);
+    $searchData = SearchData::from([]);
 
     $results = GiveMeTravels::query($searchData)
         ->through([

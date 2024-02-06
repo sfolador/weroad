@@ -16,7 +16,7 @@ class TravelResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'numberOfDays' => $this->numberOfDays,
-//            'moods' => $this->moods,
+            //            'moods' => $this->moods,
         ];
     }
 }

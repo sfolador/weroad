@@ -10,15 +10,11 @@ use App\Models\Travel;
 
 class TravelToursController extends Controller
 {
-    /**
-     * @param Travel $travel
-     * @param TourCreationData $tourCreationData
-     * @return TourResource
-     */
     public function store(Travel $travel, TourCreationData $tourCreationData): TourResource
     {
 
         $tour = CreateTour::execute($tourCreationData);
+
         return new TourResource($tour);
     }
 }
