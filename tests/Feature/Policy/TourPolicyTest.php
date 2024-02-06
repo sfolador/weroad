@@ -43,3 +43,15 @@ it('only admin can force delete', function () {
 
     $this->assertTrue($user->can('forceDelete', $tour));
 });
+
+it('a user without role cannot do anything except view',function(){
+    $user = User::factory()->create([
+        'role_id' => null
+    ]);
+    $tour = Tour::factory()->create();
+    $this->assertFalse($user->can('create', Tour::class));
+    $this->assertFalse($user->can('update', $tour));
+    $this->assertFalse($user->can('delete', $tour));
+    $this->assertFalse($user->can('restore', $tour));
+    $this->assertFalse($user->can('forceDelete', $tour));
+});

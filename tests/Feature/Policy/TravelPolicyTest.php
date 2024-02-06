@@ -82,3 +82,20 @@ it('editor cannot force delete', function () {
     $travel = Travel::factory()->create();
     $this->assertFalse($user->can('forceDelete', $travel));
 });
+
+
+it('a user without role cannot do anything',function(){
+    $user = User::factory()->create(
+        [
+            'role_id' => null
+        ]
+    );
+    $travel = Travel::factory()->create();
+    $this->assertFalse($user->can('viewAny', Travel::class));
+    $this->assertFalse($user->can('view', $travel));
+    $this->assertFalse($user->can('create', Travel::class));
+    $this->assertFalse($user->can('update', $travel));
+    $this->assertFalse($user->can('delete', $travel));
+    $this->assertFalse($user->can('restore', $travel));
+    $this->assertFalse($user->can('forceDelete', $travel));
+});
