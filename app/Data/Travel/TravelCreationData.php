@@ -27,7 +27,7 @@ class TravelCreationData extends Data
         #[IntegerType, Min(1), Max(365)]
         public int $numberOfDays,
         #[DataCollectionOf(MoodData::class)]
-        public DataCollection $moods,
+        public ?DataCollection $moods,
     ) {
     }
 }

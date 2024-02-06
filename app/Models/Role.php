@@ -23,11 +23,11 @@ class Role extends Model
 
     public static function admin(): self
     {
-        return self::where('name', Roles::ADMIN)->firstOrFail();
+        return self::where('name', Roles::ADMIN->value)->firstOrFail();
     }
 
     public static function editor(): self
     {
-        return self::where('name', Roles::EDITOR)->firstOrFail();
+        return self::where('name', Roles::EDITOR->value)->firstOrFail();
     }
 }

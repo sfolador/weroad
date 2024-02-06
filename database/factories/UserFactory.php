@@ -34,7 +34,7 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'role_id' => Role::factory()->admin()->create()->id,
+                'role_id' => Role::admin()->id,
             ];
         });
     }
@@ -43,7 +43,7 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'role_id' => Role::factory()->editor()->create()->id,
+                'role_id' => Role::editor()->id,
             ];
         });
     }

@@ -2,7 +2,7 @@
 
 use App\Models\User;
 
-it('can login user', function () {
+it('a user can login', function () {
 
     $admin = User::where('email', 'admin@example.com')->first();
     $password = 'admin_password';
