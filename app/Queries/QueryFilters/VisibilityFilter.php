@@ -15,9 +15,6 @@ class VisibilityFilter extends AbstractFilter
     {
         if ($this->searchData) {
             $query->whereHas('travel', function ($q) {
-                /**
-                 * @phpstan-ignore-next-line
-                 */
                 $q->where('public', true);
             });
         }

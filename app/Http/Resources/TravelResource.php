@@ -8,6 +8,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin \App\Models\Travel */
 class TravelResource extends JsonResource
 {
+    /**
+     * @param Request $request
+     * @return array<string, mixed>
+     */
     public function toArray(Request $request): array
     {
         return [
