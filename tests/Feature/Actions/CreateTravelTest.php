@@ -69,5 +69,4 @@ it('creates a travel with moods', function () {
         ->and($travel->moods->last())->name->toBe('Mood 2')
         ->and($travel->moods->last())->pivot->value->toBe(2);
 
-
 });

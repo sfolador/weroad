@@ -22,11 +22,11 @@ class CreateTravel
 
         $moods = $travelCreationData->moods;
 
-        if ($moods){
+        if ($moods) {
             $moods->each(function (MoodData $moodData) use ($travel) {
 
                 $mood = Mood::where('name', $moodData->name)->first();
-                if (!$mood)  {
+                if (! $mood) {
                     $mood = new Mood();
                     $mood->name = $moodData->name;
                     $mood->save();
@@ -35,7 +35,6 @@ class CreateTravel
 
             });
         }
-
 
         return $travel;
 

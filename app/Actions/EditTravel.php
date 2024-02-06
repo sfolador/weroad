@@ -6,7 +6,6 @@ use App\Data\MoodData;
 use App\Data\Travel\TravelEditData;
 use App\Models\Mood;
 use App\Models\Travel;
-use App\Queries\QueryFilters\PriceFilter;
 use Illuminate\Support\Str;
 use Spatie\LaravelData\Optional;
 
@@ -32,13 +31,13 @@ class EditTravel
 
         $moods = $travelEditData->moods;
 
-        if ($moods){
+        if ($moods) {
             $travel->moods()->detach();
 
             $moods->each(function (MoodData $moodData) use ($travel) {
 
                 $mood = Mood::where('name', $moodData->name)->first();
-                if (!$mood)  {
+                if (! $mood) {
                     $mood = new Mood();
                     $mood->name = $moodData->name;
                     $mood->save();
@@ -47,7 +46,6 @@ class EditTravel
 
             });
         }
-
 
         return $travel;
 

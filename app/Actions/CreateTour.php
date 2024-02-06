@@ -15,6 +15,9 @@ class CreateTour
         $tour->travel_id = $tourCreationData->travel;
         $tour->startingDate = $tourCreationData->startingDate;
         $tour->endingDate = $tourCreationData->endingDate;
+        /**
+         * @phpstan-ignore-next-line
+         */
         $tour->price = $tourCreationData->price;
         $tour->save();
 

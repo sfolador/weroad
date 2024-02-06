@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Data\Value\Price;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -33,5 +35,16 @@ class Tour extends Model
     public function travel(): BelongsTo
     {
         return $this->belongsTo(Travel::class);
+    }
+
+    /**
+     * @phpstan-ignore-next-line
+     */
+    protected function price(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Price::from($value)->fromCents(),
+            set: fn ($value) => Price::from($value)->toCents(),
+        );
     }
 }

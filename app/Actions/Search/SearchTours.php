@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Pipeline;
 class SearchTours
 {
     /**
-     * @param SearchData $searchData
      * @return LengthAwarePaginator<Tour>
      */
     public static function execute(SearchData $searchData): LengthAwarePaginator

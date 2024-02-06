@@ -2,6 +2,7 @@
 
 namespace App\Queries\QueryFilters;
 
+use App\Data\Value\Price;
 use App\Models\Tour;
 use App\Queries\GiveMeTravels;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,13 +24,13 @@ class PriceFilter extends AbstractFilter
                 /**
                  * @phpstan-ignore-next-line
                  */
-                $q->where('price', '>=', $this->searchData->priceFrom);
+                $q->where('price', '>=', Price::from($this->searchData->priceFrom)->toCents());
             })
                 ->when($priceToIsSet, function ($q) {
                     /**
                      * @phpstan-ignore-next-line
                      */
-                    $q->where('price', '<=', $this->searchData->priceTo);
+                    $q->where('price', '<=', Price::from($this->searchData->priceTo)->toCents());
                 });
         }
 

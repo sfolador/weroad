@@ -171,9 +171,9 @@ it('can sort everything in asc by price', function () {
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
         ->and($travels->items())->toHaveCount(3)
-        ->and($travels->items()[0]->price)->toBe(100)
-        ->and($travels->items()[1]->price)->toBe(500)
-        ->and($travels->items()[2]->price)->toBe(10000);
+        ->and($travels->items()[0]->price)->toBe(100.0)
+        ->and($travels->items()[1]->price)->toBe(500.0)
+        ->and($travels->items()[2]->price)->toBe(10000.0);
 });
 
 it('can sort everything in desc by price', function () {
@@ -183,7 +183,7 @@ it('can sort everything in desc by price', function () {
 
     expect($travels)->toBeInstanceOf(LengthAwarePaginator::class)
         ->and($travels->items())->toHaveCount(3)
-        ->and($travels->items()[0]->price)->toBe(10000)
-        ->and($travels->items()[1]->price)->toBe(500)
-        ->and($travels->items()[2]->price)->toBe(100);
+        ->and($travels->items()[0]->price)->toBe(10000.0)
+        ->and($travels->items()[1]->price)->toBe(500.0)
+        ->and($travels->items()[2]->price)->toBe(100.0);
 });

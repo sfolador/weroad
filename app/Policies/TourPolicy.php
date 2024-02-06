@@ -24,41 +24,46 @@ class TourPolicy
 
     public function create(User $user): bool
     {
-        if (! $user->role){
+        if (! $user->role) {
             return false;
         }
+
         return $user->role->id === Role::admin()->id;
     }
 
     public function update(User $user, Tour $tour): bool
     {
-        if (! $user->role){
+        if (! $user->role) {
             return false;
         }
+
         return $user->role->id === Role::admin()->id;
     }
 
     public function delete(User $user, Tour $tour): bool
     {
-        if (! $user->role){
+        if (! $user->role) {
             return false;
         }
+
         return $user->role->id === Role::admin()->id;
     }
 
     public function restore(User $user, Tour $tour): bool
     {
-        if (! $user->role){
+        if (! $user->role) {
             return false;
         }
+
         return $user->role->id === Role::admin()->id;
     }
 
     public function forceDelete(User $user, Tour $tour): bool
     {
-        if (! $user->role){
+        if (! $user->role) {
             return false;
         }
+
         return $user->role->id === Role::admin()->id;
     }
 }
